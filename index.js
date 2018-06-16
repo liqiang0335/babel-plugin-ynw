@@ -6,6 +6,9 @@ const registeVueCompsAst = require("./src/registeVueComps");
 const handler = {
   ynRegisteVueComps(path) {
     path.replaceWithMultiple(registeVueCompsAst);
+  },
+  importVueComps(path) {
+    path.replaceWithMultiple(registeVueCompsAst);
   }
 };
 
