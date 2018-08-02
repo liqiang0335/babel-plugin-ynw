@@ -17,26 +17,21 @@ npm i --save-dev babel-plugin-ynw
 }
 ```
 
-## ynRegisteVueComps
+## importVueComps
 
 > 自动注册 Vue 组件
 
 ```js
-// 自动注册 comps 文件夹下面的 .vue 文件为  VUE 组件 (带有 yn 前缀)
-// 出于性能的考虑, 没有设置自定义参数, 也就是说需要把组件放在 "comps" 文件夹
-ynRegisteVueComps();
+/**
+ * 自动注册项目文件夹下的 comps 文件夹中的 .vue 文件为组件
+ * (带有yn前缀)
+ */
+importVueComps();
 
-// 以上一行代码会转义为这一坨代码
-const compContext = require.context("./comps", true, /\.vue$/);
-compContext.keys().forEach(p => {
-  const getCompPathName = path => {
-    const match = path.match(/\w+?(?=\/)/g);
-    if (!match) return "";
-    return match.map(item => item.replace(/\//g, "")).join("-") + "-";
-  };
-  const name = p.match(/([\w\-]+)\.vue$/)[1];
-  const folder = getCompPathName(p);
-  const option = compContext(p).default;
-  Vue.component("yn-" + folder + name, option);
-});
+/**
+ * 注册其他文件夹 Vue组件(带有yn前缀)
+ * @param <String> path : 路径
+ * @param <Array> compsName : 导入组件的名称数组
+ */
+importVueComps("@common/comps", ["compA", "compB"]);
 ```
