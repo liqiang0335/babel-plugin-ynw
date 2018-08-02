@@ -1,10 +1,6 @@
 {
   "name": "babel-plugin-ynw",
-<<<<<<< HEAD
   "version": "1.0.0",
-=======
-  "version": "0.0.9",
->>>>>>> a07e906beca0237a7a42b3b3834e223d1006e24b
   "description": "",
   "main": "index.js",
   "scripts": {
